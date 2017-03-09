@@ -8,4 +8,4 @@ Follow these steps to get the project running.
 - Install virtualenv;
 - Activate virtualenv (on fish shell, '. env/bin/activate.fish');
 - Run 'pip install Flask';
-- Run 'python app/routes.py'
+- Run 'python app/pasco.py'
