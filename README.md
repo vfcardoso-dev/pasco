@@ -9,3 +9,7 @@ Follow these steps to get the project running.
 - Activate virtualenv (on fish shell, '. env/bin/activate.fish');
 - Run 'pip install Flask';
 - Run 'python app/pasco.py'
+
+# To-do
+- [x] Start project
+- [ ] Adapt algorithm to avoid exceptions of 2076-04-26 and 2049-04-25
