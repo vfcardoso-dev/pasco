@@ -6,26 +6,27 @@ import json
 class HolidayResource(object):
 
 	def list(self, year):
+		pascoa = easter_sunday(year) # Recupera domingo de pascoa
+		carnaval = pascoa - timedelta(days=47) # Carnaval
+		cinzas = pascoa - timedelta(days=46)  # Cinzas
+		paixao = pascoa - timedelta(days=2) # Paixao
+		corpus_christi = pascoa + timedelta(days=60) # Corpus Christi
+		
 		lista = []
-		es = easter_sunday(year)
+		lista.append(Holiday(datetime(year, 1, 1), "Ano novo", True))
+		lista.append(Holiday(carnaval, "Carnaval", False))
+		lista.append(Holiday(cinzas, "Quarta-feira de Cinzas", False))
+		lista.append(Holiday(paixao, "Sexta-feira da Paixao", False))
+		lista.append(Holiday(pascoa, "Pascoa", False))
+		lista.append(Holiday(datetime(year, 4, 21), "Tiradentes", True))
+		lista.append(Holiday(datetime(year, 5, 1), "Dia do Trabalho", True))
+		lista.append(Holiday(corpus_christi, "Corpus Christi", False))
+		lista.append(Holiday(datetime(year, 9, 7), "Independencia do Brasil", True))
+		lista.append(Holiday(datetime(year, 10, 12), "Nossa Senhora Aparecida", True))
+		lista.append(Holiday(datetime(year, 11, 2), "Finados", True))
+		lista.append(Holiday(datetime(year, 11, 15), "Proclamacao da Republica", True))
+		lista.append(Holiday(datetime(year, 12, 25), "Natal", True))
 
-		''' carnaval '''
-		dt = es - timedelta(days=47)
-		lista.append(Holiday(dt, "Carnaval", False))
-
-		''' quarta de cinzas '''
-		dt = es - timedelta(days=46)
-		lista.append(Holiday(dt, "Quarta-feira de Cinzas", False))
-
-		''' paixao '''
-		dt = es - timedelta(days=2)
-		lista.append(Holiday(dt, "Sexta-feira da Paixao", False))
-
-		''' pascoa '''
-		lista.append(Holiday(es, "Pascoa", False))
-
-		''' corpus christi '''
-		dt = es + timedelta(days=60)
-		lista.append(Holiday(dt, "Corpus Christi", False))
+		sorted(lista, key=lambda hl: hl.date)
 
 		return json.dumps([obj.__dict__ for obj in lista], default = dt_converter)

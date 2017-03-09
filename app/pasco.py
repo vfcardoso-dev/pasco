@@ -23,6 +23,3 @@ def index():
 @app.route("/<int:year>/holidays")
 def holidays(year):
 	return Response(HolidayResource().list(year), mimetype='application/json')
-
-if __name__ == "__main__":
-	app.run()
