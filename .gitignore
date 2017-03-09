@@ -1,0 +1,9 @@
+# extensions
+*.pyc
+*.zip
+
+# folders
+env/
+
+# files
+Thumbs.db
