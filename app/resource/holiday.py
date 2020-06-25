@@ -29,4 +29,4 @@ class HolidayResource(object):
 
 		sorted(lista, key=lambda hl: hl.date)
 
-		return json.dumps([obj.__dict__ for obj in lista], default = dt_converter)
+		return json.dumps([obj.__dict__ for obj in lista], default = dt_converter, indent=2)
